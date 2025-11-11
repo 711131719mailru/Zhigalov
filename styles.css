@@ -7,11 +7,15 @@
 }
 *{box-sizing:border-box}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0}
-.header{max-width:980px;margin:0 auto;padding:40px 20px;display:flex;gap:24px;align-items:center}
+.header{max-width:980px;margin:0 auto;padding:20px 20px;display:flex;gap:24px;align-items:center;border-bottom:1px solid #e9eef5;background:#fafbfc}
 .header img{width:180px;height:180px;object-fit:cover;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .header .info h1{margin:0 0 8px;font-size:32px;color:var(--accent)}
 .header .info p{margin:4px 0;color:var(--muted)}
-.section{max-width:980px;margin:0 auto;padding:24px 20px 8px}
+.section{
+  max-width:980px;
+  margin:0 auto;
+  padding:12px 20px 0px;
+}
 .section h2{color:var(--accent)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin:16px 0}
 .card{border:1px solid #e5e7eb;border-radius:10px;padding:16px;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.04)}
