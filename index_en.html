@@ -1,6 +1,32 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
+<style>
+  /* Прячем всё содержимое, пока стили не прогрузятся */
+  html {
+    visibility: hidden;
+    opacity: 0;
+  }
+  /* Класс, который мы добавим, когда всё будет готово */
+  html.loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  // Ждем полной загрузки окна
+  window.onload = function() {
+    // Показываем сайт
+    document.documentElement.classList.add('loaded');
+  };
+  
+  // Страховка: если вдруг window.onload зависнет, показать сайт через 1.5 секунды принудительно
+  setTimeout(function() {
+    document.documentElement.classList.add('loaded');
+  }, 1500);
+</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Dr. Konstantin Zhigalov — MD, PhD. Scientific consulting, biostatistics, and medical editing.">
