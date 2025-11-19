@@ -1,174 +1,383 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="googlebot" content="noindex, nofollow">
-  <title>Константин Жигалов — научное консультирование</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Dr. Konstantin Zhigalov — MD, PhD. Научный консалтинг, статистика, медицинская редакция.">
+  <title>Dr. Konstantin Zhigalov | MD, PhD, Professor h.c.</title>
+  
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#0F4C81', dark: '#0a3b66', light: '#e0f2fe' },
+            gold: { DEFAULT: '#c5a065' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Иконки -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Скрипт авто-определения языка -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('langRedirected')) return;
+      const lang = navigator.language || navigator.userLanguage;
+      const path = window.location.pathname;
+      if (path.endsWith('index.html') || path.endsWith('/')) {
+        sessionStorage.setItem('langRedirected', 'true');
+        if (lang.startsWith('de')) {
+          window.location.href = 'index_de.html';
+        } else if (!lang.startsWith('ru') && !lang.startsWith('be') && !lang.startsWith('kk') && !lang.startsWith('uk')) {
+          window.location.href = 'index_en.html';
+        }
+      }
+    })();
+  </script>
+
+  <style>
+    .fade-in { animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .cert-img-container { aspect-ratio: 1 / 1.414; background: #fff; display: flex; align-items: center; justify-content: center; }
+  </style>
 </head>
-<body>
-  <header class="header">
-    <div class="info">
-      <h1>Константин Жигалов,</h1>
-      <h1>MD, PhD (Charité, Berlin), Prof. h.c.</h1>
-      <p>Кардиохирург, научный консультант</p>
-      <p>
-        Написать в 
-        <a href="https://t.me/+79854770449" target="_blank" rel="noopener">Telegram</a> или в
-        <a href="https://wa.me/79854770449" target="_blank" rel="noopener">WhatsApp</a>
-      </p>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+  <!-- Навигация -->
+  <nav class="bg-white/95 backdrop-blur-md fixed w-full z-50 border-b border-slate-200 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center">
+          <a href="#" class="font-serif text-xl font-bold text-brand tracking-tight hover:text-brand-dark transition">
+            K. Zhigalov <span class="text-gold text-sm align-top ml-1">MD, PhD</span>
+          </a>
+        </div>
+        <div class="flex items-center gap-4 md:gap-8">
+          <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+            <a href="#about" class="hover:text-brand transition">Обо мне</a>
+            <a href="#services" class="hover:text-brand transition">Услуги</a>
+            <a href="#process" class="hover:text-brand transition">Этапы</a>
+            <a href="#blog" class="hover:text-brand transition">Блог</a>
+          </div>
+          <div class="flex items-center bg-slate-100 rounded-lg p-1 text-xs font-bold">
+            <a href="index_en.html" class="w-8 h-7 flex items-center justify-center rounded text-slate-400 hover:text-slate-600 transition">EN</a>
+            <div class="w-px h-4 bg-slate-300 mx-1"></div>
+            <a href="index_de.html" class="w-8 h-7 flex items-center justify-center rounded text-slate-400 hover:text-slate-600 transition">DE</a>
+            <div class="w-px h-4 bg-slate-300 mx-1"></div>
+            <a href="index.html" class="w-8 h-7 flex items-center justify-center rounded bg-white shadow-sm text-brand cursor-default">RU</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <section class="section">
-    <h2>Обо мне</h2>
-    <p>Кардиохирург с многолетним опытом работы в университетских клиниках Германии.</p>
-    <p>Защита диссертации (PhD) в Charité, Berlin.</p>
-    <p>Автор 70+ публикаций (Scopus, PubMed).</p>
-    <p>Веду Telegram-канал о научном письме <a href="https://t.me/hirsch_index_school" target="_blank" rel="noopener">«Индекс Хирша»</a>.</p>
-  </section>
-  <section class="section">
-    <h2>Что я делаю</h2>
-    <p>Помогаю авторам структурировать исследования, оформить рукописи и пройти публикационный цикл 
-       в формате научно-методического консультирования и редакторской поддержки.</p>    
-    <p>Полностью выполняю статистическую обработку данных в SPSS для статей и диссертаций.</p>
-    <p>Консультирую и редактирую на трёх языках: русском, английском, немецком.</p>
-    <p>Работаю со всеми медицинскими специальностями.</p>
-  </section>
-
-
-<section class="section">
-  <h2>Сертификаты</h2>
-  <div class="certificates left">
-    <button class="cert-thumb" data-full="cert1.jpg" aria-label="Сертификат 1">
-      <img src="cert1_thumb.jpg" alt="Сертификат 1">
-    </button>
-    <button class="cert-thumb" data-full="cert2.jpg" aria-label="Сертификат 2">
-      <img src="cert2_thumb.jpg" alt="Сертификат 2">
-    </button>
-    <button class="cert-thumb" data-full="cert3.jpg" aria-label="Сертификат 3">
-      <img src="cert3_thumb.jpg" alt="Сертификат 3">
-    </button>
-    <button class="cert-thumb" data-full="cert4.jpg" aria-label="Сертификат 4">
-      <img src="cert4_thumb.jpg" alt="Сертификат 4">
-    </button>
-  </div>
-</section>
-
-<!-- Лайтбокс -->
-<div id="lightbox" class="lightbox hidden">
-  <button class="lightbox-close" aria-label="Закрыть">×</button>
-  <img id="lightbox-img" alt="">
-</div>
-
-<section class="section">
-    <h2>Наукометрия</h2>
-    <p>Scopus Author ID: 57517490500</p>
-    <p>ORCID: 0000-0002-6440-3736</p>
-    <p>ResearcherID: L-4962-2017</p>
-    <p>Количество публикаций: 77 (Eng 72 / Rus 5)</p>
-    <p>Индекс Хирша: 16 (Scopus) / 18 (Google Scholar)</p>
-    <p>i10-index: 35 (Google Scholar)</p>
-    <p>
-      <a href="Zhigalov_Publications.pdf" target="_blank" rel="noopener">
-        Публикационная и издательская активность (PDF)
-      </a>
-    </p>
-  </section>
-  <section class="section" id="services">
-    <h2>Услуги</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Консультирование</h3>
-        <ul>
-          <li>Архитектура исследования, дизайн, чек-листы EQUATOR;</li>
-          <li>План публикаций (Перечень ВАК, Scopus/WoS);</li>
-          <li>План статистики, критерии, размер эффекта.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Редактура и оформление</h3>
-        <ul>
-          <li>Научное и языковое редактирование (RU/EN/DE);</li>
-          <li>Оформление по правилам журнала и по ГОСТ;</li>
-          <li>Сопроводительные материалы (cover letter, ответ рецензентам).</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Статистика и визуализация</h3>
-        <ul>
-          <li>Полный цикл в SPSS (при необходимости — R/Python);</li>
-          <li>Таблицы и графики «журнального» качества;</li>
-          <li>Описание методов и результатов в рукописи.</li>
-        </ul>
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+        <div class="lg:col-span-7 text-center lg:text-left fade-in">
+          <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-brand uppercase bg-blue-50 border border-blue-100 rounded-full">
+            Научно-медицинский консалтинг
+          </div>
+          <h1 class="text-4xl lg:text-6xl font-serif font-bold text-slate-900 leading-[1.1] mb-6">
+            Научный консалтинг <br>
+            <span class="text-brand">международного уровня</span>
+          </h1>
+          <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Помогаю врачам и исследователям проходить путь от идеи до публикации в <strong>Q1/Q2-журналах</strong>. 
+            Стратегия, статистика и безупречное оформление рукописей.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="https://t.me/+79854770449" target="_blank" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-brand hover:bg-brand-dark shadow-lg hover:shadow-brand/30 transition duration-300">
+              Обсудить проект
+            </a>
+            <a href="#services" class="inline-flex justify-center items-center px-8 py-3.5 border border-slate-300 text-base font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition duration-300">
+              Услуги и компетенции
+            </a>
+          </div>
+          <div class="mt-10 pt-8 border-t border-slate-200 flex justify-center lg:justify-start">
+             <a href="https://orcid.org/0000-0002-6440-3736" target="_blank" class="group flex items-center bg-white border border-slate-200 rounded-xl p-3 pr-6 shadow-sm hover:shadow-md hover:border-brand/30 transition">
+                <div class="w-12 h-12 bg-[#A6CE39] rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                  <i class="fab fa-orcid"></i>
+                </div>
+                <div class="text-left">
+                  <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wide">Konstantin Zhigalov, MD, PhD, Prof h.c.</div>
+                  <div class="font-mono text-slate-800 group-hover:text-brand transition">https://orcid.org/0000-0002-6440-3736</div>
+                  <div class="text-xs text-slate-500 mt-0.5">H-Index: 16 (Scopus)</div>
+                </div>
+             </a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 mt-12 lg:mt-0 relative hidden lg:block">
+          <div class="absolute top-10 right-10 -mr-20 -mt-20 w-72 h-72 bg-brand/10 rounded-full blur-3xl"></div>
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-1 hover:rotate-0 transition duration-500">
+            <!-- Здесь используем новый сгенерированный файл -->
+            <img src="clinic.jpg" alt="Academic Medicine" class="w-full h-[500px] object-cover">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-<section class="section">
-  <h2>Как мы работаем вместе с Вами</h2>
-  <p><strong>Аудит</strong> — обсуждаем задачу и целевые журналы, согласуем план.</p>
-  <p><strong>Консультация</strong> — методические решения, структура, план статистики.</p>
-  <p><strong>Редактура</strong> — улучшение текста, оформление по журналу/ГОСТ.</p>
-  <p><strong>Сопровождение</strong> — финальная вычитка, подготовка к отправке.</p>
-  <p class="legal-note">
-    Все услуги оказываются в формате консультаций и методического сопровождения.
-    Автор самостоятельно несёт ответственность за оригинальность и содержание текста;
-    решения редакций журналов/диссертационных советов не гарантируются.
-  </p>
-</section>
+  <!-- Обо мне + Сертификаты -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div>
+          <h2 class="text-3xl font-serif font-bold text-slate-900 mb-6">Квалификация</h2>
+          <div class="prose prose-slate text-slate-600 leading-relaxed">
+            <p class="mb-5">
+              Врач-кардиохирург с многолетним опытом работы в университетских клиниках Германии. 
+              Успешно защитил диссертацию (PhD) в одной из ведущих клиник Европы — <strong>Charité – Universitätsmedizin Berlin</strong>.
+            </p>
+            <p class="mb-5">
+              Моя специализация — это не только клиническая практика, но и фундаментальная наука. 
+              Я понимаю боль авторов, потому что сам прошел путь от первого кейс-репорта до руководства научными группами.
+            </p>
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 mb-8">
+              <ul class="space-y-3">
+                 <li class="flex items-center text-sm">
+                   <i class="fas fa-check text-brand mr-3"></i>
+                   <span>Автор <strong>70+ публикаций</strong> (Scopus, PubMed)</span>
+                 </li>
+                 <li class="flex items-center text-sm">
+                   <i class="fas fa-check text-brand mr-3"></i>
+                   <span>Экспертное владение <strong>SPSS / R</strong></span>
+                 </li>
+                 <li class="flex items-center text-sm">
+                   <i class="fas fa-check text-brand mr-3"></i>
+                   <span>Работа на 3 языках: <strong>RU, EN, DE</strong></span>
+                 </li>
+              </ul>
+            </div>
+            
+            <!-- ИЗМЕНЕНИЕ: Ссылка на страницу публикаций вместо тизеров -->
+            <div>
+               <a href="publications.html" class="inline-flex items-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium rounded-lg transition">
+                  <i class="fas fa-list-ul mr-2 text-brand"></i> Полный список публикаций (77)
+               </a>
+               <p class="text-xs text-slate-400 mt-2 ml-1">Включая статьи First-authorship, монографии и тезисы</p>
+            </div>
 
-  <section class="section">
-    <h2>Финансовые условия</h2>
-    <p>Высылаю по запросу.</p>
+          </div>
+        </div>
+        <div>
+           <div class="flex items-center justify-between mb-6">
+              <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Сертификаты и Дипломы</h3>
+           </div>
+           <div class="grid grid-cols-2 gap-4">
+             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert1.jpg">
+               <div class="cert-img-container">
+                 <img src="cert1_thumb.jpg" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="PhD Charité">
+               </div>
+             </button>
+             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert2.jpg">
+               <div class="cert-img-container">
+                 <img src="cert2_thumb.jpg" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Approbation">
+               </div>
+             </button>
+             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert3.jpg">
+               <div class="cert-img-container">
+                 <img src="cert3_thumb.jpg" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Facharzt">
+               </div>
+             </button>
+             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert4.jpg">
+               <div class="cert-img-container">
+                 <img src="cert4_thumb.jpg" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Professor h.c.">
+               </div>
+             </button>
+           </div>
+        </div>
+      </div>
+    </div>
   </section>
 
- <section class="section">
-    <h2>Реферальная программа</h2>
-    <p>В знак благодарности за рекомендацию действует реферальная программа в размере 5% от стоимости проекта.</p>
+  <!-- Услуги -->
+  <section id="services" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-serif font-bold text-slate-900">Мои компетенции</h2>
+        <p class="mt-4 text-slate-600">Комплексный подход к научным публикациям</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Консалтинг</h3>
+            <ul class="text-sm text-slate-600 space-y-2">
+              <li>• Архитектура исследования</li>
+              <li>• Дизайн и чек-листы EQUATOR</li>
+              <li>• Подбор журнала (ВАК, Scopus, WoS)</li>
+              <li>• Ответы рецензентам</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
+              <i class="fas fa-pen-nib"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Редактура</h3>
+            <ul class="text-sm text-slate-600 space-y-2">
+              <li>• Академическое редактирование</li>
+              <li>• Оформление по ГОСТ / стилю журнала</li>
+              <li>• Сопроводительное письмо (Cover Letter)</li>
+              <li>• Работа с RU, EN, DE текстами</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Биостатистика</h3>
+            <ul class="text-sm text-slate-600 space-y-2">
+              <li>• Полный цикл в SPSS / R</li>
+              <li>• Визуализация (графики высокого DPI)</li>
+              <li>• Описание раздела "Материалы и Методы"</li>
+              <li>• Расчет размера выборки</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <hr>
-  <footer class="footer" id="contacts">
-    <p>© 2025 Консультационные и редакционно-методические услуги. Самозанятый (НПД). Все права защищены.</p>
-    <p class="muted">
-      Оплата услуг означает согласие с условиями <a class="link" href="offer.html">договора-оферты</a>.
-    </p>
+  <!-- Этапы (Твой новый блок) -->
+  <section id="process" class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-serif font-bold text-slate-900">Как строится работа</h2>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6 text-center relative">
+        <div class="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-slate-100 -z-10"></div>
+        <div>
+          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">1</div>
+          <h4 class="font-bold text-slate-900 mb-2">Аудит</h4>
+          <p class="text-sm text-slate-500">Оценка материала, выбор целевых журналов и согласование плана.</p>
+        </div>
+         <div>
+          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">2</div>
+          <h4 class="font-bold text-slate-900 mb-2">Анализ</h4>
+          <p class="text-sm text-slate-500">Статистическая обработка данных и формирование результатов.</p>
+        </div>
+         <div>
+          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">3</div>
+          <h4 class="font-bold text-slate-900 mb-2">Оформление</h4>
+          <p class="text-sm text-slate-500">Редактура, перевод, создание таблиц и рисунков по требованиям.</p>
+        </div>
+         <div>
+          <div class="w-16 h-16 mx-auto bg-brand text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg">4</div>
+          <h4 class="font-bold text-slate-900 mb-2">Сабмит</h4>
+          <p class="text-sm text-slate-500">Загрузка в журнал, переписка с редакцией до принятия статьи.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Telegram Block -->
+  <section id="blog" class="py-20 bg-white overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="relative bg-gradient-to-br from-[#2AABEE] to-[#229ED9] rounded-2xl p-8 md:p-12 text-white shadow-2xl overflow-hidden flex flex-col md:flex-row items-center gap-8">
+        <!-- Decor -->
+        <div class="absolute top-0 right-0 -mr-10 -mt-10 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+        
+        <!-- Avatar -->
+        <div class="relative z-10 flex-shrink-0">
+           <img src="avatar_tg.jpg" alt="Channel Avatar" class="w-32 h-32 rounded-full border-4 border-white/30 bg-white object-cover shadow-lg">
+        </div>
+
+        <div class="relative z-10 text-center md:text-left flex-1">
+          <div class="inline-flex items-center bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold mb-4 uppercase tracking-wider">
+             <i class="fab fa-telegram-plane mr-2"></i> Сообщество авторов
+          </div>
+          <h2 class="text-3xl font-serif font-bold mb-4">Индекс Хирша</h2>
+          <p class="text-blue-50 text-lg mb-6 leading-relaxed">
+            Авторский канал о научном письме, лайфхаках публикации в Q1/Q2 и инсайдах рецензирования. Присоединяйтесь к сообществу врачей-исследователей.
+          </p>
+          <a href="https://t.me/hirsch_index_school" target="_blank" class="inline-block bg-white text-[#229ED9] hover:bg-blue-50 font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1">
+            Подписаться на канал
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h4 class="text-white text-lg font-serif font-bold mb-4">Контакты</h4>
+          <div class="space-y-3">
+            <a href="https://t.me/+79854770449" class="flex items-center hover:text-white transition">
+              <i class="fab fa-telegram w-6 text-center mr-3"></i> Telegram
+            </a>
+            <a href="https://wa.me/79854770449" class="flex items-center hover:text-white transition">
+              <i class="fab fa-whatsapp w-6 text-center mr-3"></i> WhatsApp
+            </a>
+            <a href="mailto:zhigalovmd@yandex.ru" class="flex items-center hover:text-white transition">
+              <i class="fas fa-envelope w-6 text-center mr-3"></i> zhigalovmd@yandex.ru
+            </a>
+          </div>
+        </div>
+        <div class="md:text-right">
+           <p class="text-sm mb-2">Самозанятый Жигалов К.Ю.</p>
+           <p class="text-sm mb-4">ИНН 231223522705 · г. Москва</p>
+           <a href="offer.html" class="text-sm text-brand-light hover:text-white underline decoration-dotted">Публичная оферта</a>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-600">
+        &copy; 2025 Konstantin Zhigalov. All rights reserved.
+      </div>
+    </div>
   </footer>
 
-<script>
-  (function(){
-    const thumbs = document.querySelectorAll('.cert-thumb');
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const btnClose = document.querySelector('.lightbox-close');
+  <!-- Лайтбокс -->
+  <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+    <button class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl focus:outline-none transition">&times;</button>
+    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded shadow-2xl transform scale-95 transition-transform duration-300" src="" alt="Сертификат">
+  </div>
 
-    function openLb(src, alt){
-      lbImg.src = src;
-      lbImg.alt = alt || '';
-      lb.classList.remove('hidden');
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const btns = document.querySelectorAll('[data-full]');
+    function openLb(src) {
+      lightbox.classList.remove('hidden');
+      setTimeout(() => { lightbox.classList.remove('opacity-0'); lightboxImg.classList.remove('scale-95'); lightboxImg.classList.add('scale-100'); }, 10);
+      lightboxImg.src = src;
       document.body.style.overflow = 'hidden';
     }
-    function closeLb(){
-      lb.classList.add('hidden');
-      lbImg.src = '';
-      document.body.style.overflow = '';
+    function closeLb() {
+      lightbox.classList.add('opacity-0'); lightboxImg.classList.remove('scale-100'); lightboxImg.classList.add('scale-95');
+      setTimeout(() => { lightbox.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
     }
-
-    thumbs.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const src = btn.getAttribute('data-full');
-        const alt = btn.querySelector('img')?.alt || '';
-        openLb(src, alt);
-      });
-    });
-
-    btnClose.addEventListener('click', closeLb);
-    lb.addEventListener('click', e=>{ if(e.target === lb) closeLb(); });
-    document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLb(); });
-  })();
-</script>
+    btns.forEach(btn => btn.addEventListener('click', () => openLb(btn.dataset.full)));
+    lightbox.addEventListener('click', (e) => { if(e.target===lightbox || e.target.closest('button')) closeLb(); });
+    document.addEventListener('keydown', (e) => { if(e.key==='Escape') closeLb(); });
+  </script>
 </body>
 </html>
