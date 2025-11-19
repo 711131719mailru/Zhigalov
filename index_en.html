@@ -1,25 +1,6 @@
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
-<style>
-  /* Скрываем body, а не html. Это безопаснее для мобильных. */
-  body {
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out; /* Плавное появление за 0.4 сек */
-  }
-</style>
-
-<script>
-  function showSite() {
-    document.body.style.opacity = '1';
-  }
-
-  // 1. Сработает мгновенно, как только прочтется HTML (текст), не дожидаясь картинок
-  document.addEventListener("DOMContentLoaded", showSite);
-
-  // 2. На случай, если браузер затупит, покажем сайт принудительно через 0.1 секунды
-  setTimeout(showSite, 100);
-</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Dr. Konstantin Zhigalov — MD, PhD. Scientific consulting, biostatistics, and medical editing.">
