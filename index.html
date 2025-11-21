@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
   <meta name="description" content="Dr. Konstantin Zhigalov — MD, PhD. Научный консалтинг, статистика, медицинская редакция.">
   <title>Dr. Konstantin Zhigalov | MD, PhD, Professor h.c.</title>
   
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,9 +32,19 @@
       }
     }
   </script>
-  
+
   <style>
-    /* Убрал анимации для скорости */
+    /* Гарантированно скрываем всё до загрузки */
+    body {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out;
+    }
+    /* Класс готовности */
+    body.ready {
+      opacity: 1;
+      visibility: visible;
+    }
     .cert-img-container { aspect-ratio: 1 / 1.414; background: #fff; display: flex; align-items: center; justify-content: center; }
   </style>
 </head>
@@ -105,7 +116,7 @@
         <div class="lg:col-span-5 mt-12 lg:mt-0 relative hidden lg:block">
           <div class="absolute top-10 right-10 -mr-20 -mt-20 w-72 h-72 bg-brand/10 rounded-full blur-3xl"></div>
           <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-1 hover:rotate-0 transition duration-500">
-            <img src="clinic.jpg" loading="lazy" alt="Academic Medicine" class="w-full h-[500px] object-cover">
+            <img src="clinic.jpg" loading="eager" alt="Academic Medicine" class="w-full h-[500px] object-cover">
             </div>
           </div>
         </div>
@@ -296,7 +307,8 @@
       </div>
     </div>
   </section>
-<section class="py-12 bg-slate-50 border-t border-slate-200">
+
+  <section class="py-12 bg-slate-50 border-t border-slate-200">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 text-brand mb-4 shadow-sm">
         <i class="fas fa-handshake"></i>
@@ -320,6 +332,7 @@
       </div>
     </div>
   </section>
+
   <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-10">
@@ -355,7 +368,20 @@
   </div>
 
   <script>
-    // Логика лайтбокса
+    // 1. ФУНКЦИЯ ОТКРЫТИЯ САЙТА (Безопасная)
+    function makeSiteVisible() {
+      document.body.classList.add('ready');
+    }
+
+    // 2. ЗАПУСК (Несколько триггеров для надежности)
+    // Сработает, как только прочитается HTML (быстро)
+    document.addEventListener("DOMContentLoaded", makeSiteVisible);
+    // Сработает, когда загрузится всё остальное (медленно, но надежно)
+    window.addEventListener("load", makeSiteVisible);
+    // Сработает принудительно через 150мс (если телефон старый и события "съел")
+    setTimeout(makeSiteVisible, 150);
+
+    // 3. Логика лайтбокса
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const btns = document.querySelectorAll('[data-full]');
@@ -373,12 +399,11 @@
     lightbox.addEventListener('click', (e) => { if(e.target===lightbox || e.target.closest('button')) closeLb(); });
     document.addEventListener('keydown', (e) => { if(e.key==='Escape') closeLb(); });
 
-    // Скрипт редиректа (внизу, чтобы не блокировать загрузку)
+    // 4. Редирект (безопасный, в конце)
     (function() {
       if (sessionStorage.getItem('langRedirected')) return;
       const lang = navigator.language || navigator.userLanguage;
       const path = window.location.pathname;
-      // Проверка, что мы на русской версии
       if (path.endsWith('index.html') || path.endsWith('/')) {
         sessionStorage.setItem('langRedirected', 'true');
         if (lang.startsWith('de')) {
