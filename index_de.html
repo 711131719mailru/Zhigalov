@@ -1,336 +1,279 @@
 <!doctype html>
-<html lang="de" class="scroll-smooth">
+<html lang="de">
 <head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Dr. Konstantin Zhigalov — MD, PhD. Wissenschaftliche Beratung, Biostatistik und medizinisches Lektorat.">
   <title>Dr. Konstantin Zhigalov | MD, PhD, Professor h.c.</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { DEFAULT: '#0F4C81', dark: '#0a3b66', light: '#e0f2fe' },
-            gold: { DEFAULT: '#c5a065' }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-          }
-        }
-      }
-    }
-  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    .cert-img-container { aspect-ratio: 1 / 1.414; background: #fff; display: flex; align-items: center; justify-content: center; }
+    :root {
+      --brand: #0F4C81;
+      --brand-dark: #0a3b66;
+      --gold: #c5a065;
+      --text-main: #1e293b;
+      --text-light: #475569;
+      --bg-light: #f8fafc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    .container { max-width: 1150px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Navigation */
+    nav { background: #fff; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid #e2e8f0; height: 80px; display: flex; align-items: center; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: bold; color: var(--brand); }
+    .logo span { color: var(--gold); font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: normal; }
+    .menu { display: flex; gap: 30px; font-size: 0.9rem; font-weight: 500; color: var(--text-light); }
+    .menu a:hover { color: var(--brand); }
+    .lang-switcher { display: flex; align-items: center; background: #f1f5f9; padding: 4px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; }
+    .lang-link { padding: 4px 8px; border-radius: 4px; color: #94a3b8; }
+    .lang-link.active { background: #fff; color: var(--brand); box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .divider { width: 1px; height: 14px; background: #cbd5e1; margin: 0 2px; }
+    @media (max-width: 768px) { .menu { display: none; } }
+
+    /* Hero */
+    .hero { padding: 160px 0 100px; overflow: hidden; }
+    .hero-grid { display: flex; align-items: center; gap: 60px; }
+    .hero-text { flex: 1; }
+    .hero-img { flex: 0.8; position: relative; }
+    .badge { display: inline-block; background: #eff6ff; color: var(--brand); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; padding: 6px 16px; border-radius: 50px; margin-bottom: 24px; letter-spacing: 0.05em; }
+    h1 { font-size: 3.5rem; color: #0f172a; margin-bottom: 24px; }
+    h1 span { color: var(--brand); }
+    .hero p { font-size: 1.125rem; color: var(--text-light); margin-bottom: 32px; max-width: 600px; }
+    .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 500; cursor: pointer; }
+    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2); }
+    .btn-outline { background: #fff; border: 1px solid #cbd5e1; color: var(--text-main); margin-left: 10px; }
+    .orcid-box { margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; display: flex; align-items: center; }
+    .orcid-icon { width: 48px; height: 48px; background: #A6CE39; color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-right: 16px; }
+    .main-photo { width: 100%; height: 500px; object-fit: cover; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); transform: rotate(1deg); }
+    @media (max-width: 900px) { .hero-grid { flex-direction: column; text-align: center; } .hero-img { width: 100%; } .btn-outline { margin-left: 0; margin-top: 10px; display: block; } .orcid-box { justify-content: center; } h1 { font-size: 2.5rem; } .main-photo { height: 300px; transform: none; margin-top: 40px; } }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .bg-white { background: #fff; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    @media (max-width: 768px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 40px; } }
+
+    .service-card { background: #fff; padding: 32px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+    .icon-box { width: 48px; height: 48px; color: var(--brand); font-size: 24px; margin-bottom: 20px; }
+
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .cert-item { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #fff; aspect-ratio: 1/1.4; display: flex; align-items: center; justify-content: center; cursor: zoom-in; }
+    .cert-item img { max-width: 100%; max-height: 100%; padding: 10px; }
+
+    .partnership { text-align: center; border-top: 1px solid #e2e8f0; background: #f8fafc; }
+    .partnership-icon { width: 50px; height: 50px; background: #fff; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--brand); font-size: 20px; }
+
+    footer { background: #0f172a; color: #94a3b8; padding: 60px 0; font-size: 0.9rem; }
+    footer a:hover { color: #fff; }
+    .footer-grid { display: flex; justify-content: space-between; }
+    @media (max-width: 768px) { .footer-grid { flex-direction: column; gap: 30px; text-align: center; } }
+
+    #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
+    #lightbox.active { display: flex; }
+    #lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+<body>
 
-  <nav class="bg-white fixed w-full z-50 border-b border-slate-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <div class="flex-shrink-0 flex items-center">
-          <a href="index_de.html" class="font-serif text-xl font-bold text-brand tracking-tight hover:text-brand-dark transition">
-            K. Zhigalov <span class="text-gold text-sm align-top ml-1">MD, PhD</span>
-          </a>
-        </div>
-        <div class="flex items-center gap-4 md:gap-8">
-          <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-            <a href="#about" class="hover:text-brand transition">Über mich</a>
-            <a href="#services" class="hover:text-brand transition">Leistungen</a>
-            <a href="#process" class="hover:text-brand transition">Ablauf</a>
+<nav>
+    <div class="container nav-inner">
+      <div class="logo">
+        K. Zhigalov <span>MD, PhD</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:30px;">
+        <div class="menu">
+          <a href="#about">Über mich</a>
+          <a href="#services">Leistungen</a>
+          <a href="#process">Ablauf</a>
           </div>
-          <div class="flex items-center bg-slate-100 rounded-lg p-1 text-xs font-bold">
-            <a href="index_en.html" class="w-8 h-7 flex items-center justify-center rounded text-slate-400 hover:text-slate-600 transition">EN</a>
-            <div class="w-px h-4 bg-slate-300 mx-1"></div>
-            <a href="index_de.html" class="w-8 h-7 flex items-center justify-center rounded bg-white shadow-sm text-brand cursor-default">DE</a>
-            <div class="w-px h-4 bg-slate-300 mx-1"></div>
-            <a href="index.html" class="w-8 h-7 flex items-center justify-center rounded text-slate-400 hover:text-slate-600 transition">RU</a>
-          </div>
+        <div class="lang-switcher">
+          <a href="index_en.html" class="lang-link">EN</a>
+          <div class="divider"></div>
+          <a href="index_de.html" class="lang-link active">DE</a>
+          <div class="divider"></div>
+          <a href="index.html" class="lang-link">RU</a>
         </div>
       </div>
     </div>
   </nav>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">Wissenschaftlich-medizinische Beratung</span>
+          <h1>Wissenschaftliche Beratung <br><span>auf Weltniveau</span></h1>
+          <p>Ich unterstütze Mediziner und Forscher auf dem Weg von der Idee zur Veröffentlichung in Q1/Q2-Journals. Strategie, Statistik und makellose Manuskripterstellung.</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; lg:justify-content: flex-start;">
+            <a href="#contact" class="btn btn-primary">Projekt besprechen</a>
+            <a href="#services" class="btn btn-outline">Leistungen</a>
+          </div>
 
-  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-        <div class="lg:col-span-7 text-center lg:text-left">
-          <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-wider text-brand uppercase bg-blue-50 border border-blue-100 rounded-full">
-            Wissenschaftlich-medizinische Beratung
-          </div>
-          <h1 class="text-4xl lg:text-6xl font-serif font-bold text-slate-900 leading-[1.1] mb-6">
-            Wissenschaftliche Beratung <br>
-            <span class="text-brand">auf Weltniveau</span>
-          </h1>
-          <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Ich unterstütze Mediziner und Forscher auf dem Weg von der Idee zur Veröffentlichung in <strong>Q1/Q2-Journals</strong>. 
-            Strategie, Statistik und makellose Manuskripterstellung.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#contact" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-brand hover:bg-brand-dark shadow-lg hover:shadow-brand/30 transition duration-300">
-              Projekt besprechen
-            </a>
-            <a href="#services" class="inline-flex justify-center items-center px-8 py-3.5 border border-slate-300 text-base font-medium rounded-lg text-slate-700 bg-white hover:bg-slate-50 transition duration-300">
-              Leistungen & Kompetenzen
-            </a>
-          </div>
-          <div class="mt-10 pt-8 border-t border-slate-200 flex justify-center lg:justify-start">
-             <a href="https://orcid.org/0000-0002-6440-3736" target="_blank" class="group flex items-center bg-white border border-slate-200 rounded-xl p-3 pr-6 shadow-sm hover:shadow-md hover:border-brand/30 transition">
-                <div class="w-12 h-12 bg-[#A6CE39] rounded-lg flex items-center justify-center text-white text-2xl mr-4">
-                  <i class="fab fa-orcid"></i>
-                </div>
-                <div class="text-left">
-                  <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wide">Konstantin Zhigalov, MD, PhD, Prof h.c.</div>
-                  <div class="font-mono text-slate-800 group-hover:text-brand transition">https://orcid.org/0000-0002-6440-3736</div>
-                  <div class="text-xs text-slate-500 mt-0.5">H-Index: 16 (Scopus)</div>
-                </div>
-             </a>
-          </div>
-        </div>
-        <div class="lg:col-span-5 mt-12 lg:mt-0 relative hidden lg:block">
-          <div class="absolute top-10 right-10 -mr-20 -mt-20 w-72 h-72 bg-brand/10 rounded-full blur-3xl"></div>
-          <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-1 hover:rotate-0 transition duration-500">
-            <img src="clinic.jpg" loading="lazy" alt="Academic Medicine" class="w-full h-[500px] object-cover">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-16 items-start">
-        <div>
-          <h2 class="text-3xl font-serif font-bold text-slate-900 mb-6">Qualifikation</h2>
-          <div class="prose prose-slate text-slate-600 leading-relaxed">
-            <p class="mb-5">
-              Herzchirurg mit langjähriger Erfahrung an führenden Universitätskliniken in Deutschland. 
-              Erfolgreich promoviert (PhD) an einer der renommiertesten Einrichtungen Europas — der <strong>Charité – Universitätsmedizin Berlin</strong>.
-            </p>
-            <p class="mb-5">
-              Meine Spezialisierung umfasst sowohl die klinische Praxis als auch die Grundlagenforschung. 
-              Ich verstehe die Herausforderungen der Autoren, da ich den Weg vom ersten Fallbericht bis zur Leitung wissenschaftlicher Gruppen selbst gegangen bin.
-            </p>
-            <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 mb-8">
-              <ul class="space-y-3">
-                 <li class="flex items-center text-sm">
-                   <i class="fas fa-check text-brand mr-3"></i>
-                   <span>Autor von <strong>70+ Publikationen</strong> (Scopus, PubMed)</span>
-                 </li>
-                 <li class="flex items-center text-sm">
-                   <i class="fas fa-check text-brand mr-3"></i>
-                   <span>Experte für <strong>SPSS / R</strong></span>
-                 </li>
-                 <li class="flex items-center text-sm">
-                   <i class="fas fa-check text-brand mr-3"></i>
-                   <span>Beratung in 3 Sprachen: <strong>DE, EN, RU</strong></span>
-                 </li>
-              </ul>
-            </div>
-            
+          <div class="orcid-box">
+            <div class="orcid-icon"><i class="fab fa-orcid"></i></div>
             <div>
-               <a href="publications_de.html" class="inline-flex items-center px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium rounded-lg transition">
-                  <i class="fas fa-list-ul mr-2 text-brand"></i> Vollständige Publikationsliste (77)
-               </a>
-               <p class="text-xs text-slate-400 mt-2 ml-1">Einschließlich Erstautorenschaften, Monografien und Abstracts</p>
+              <div style="font-size: 10px; text-transform: uppercase; color: #94a3b8; font-weight: bold;">Konstantin Zhigalov, MD, PhD</div>
+              <div style="font-family: monospace; color: #334155;">0000-0002-6440-3736</div>
+              <div style="font-size: 12px; color: #64748b;">H-Index: 16 (Scopus)</div>
             </div>
-
           </div>
+        </div>
+        <div class="hero-img">
+          <img src="clinic.jpg" class="main-photo" alt="Medizinisches Büro">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="bg-white">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>Qualifikation</h2>
+          <p style="margin: 20px 0; color: #475569;">
+            Herzchirurg mit langjähriger Erfahrung an führenden Universitätskliniken in Deutschland. 
+            Erfolgreich promoviert (PhD) an einer der renommiertesten Einrichtungen Europas — der <strong>Charité – Universitätsmedizin Berlin</strong>.
+          </p>
+          <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <ul style="list-style: none; font-size: 0.9rem;">
+              <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Autor von 70+ Publikationen (Scopus)</li>
+              <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Experte für SPSS / R</li>
+              <li><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Beratung in 3 Sprachen: DE, EN, RU</li>
+            </ul>
+          </div>
+          <a href="publications_de.html" class="btn btn-outline" style="margin:0; font-size: 0.9rem;">
+            <i class="fas fa-list"></i> Vollständige Publikationsliste (77)
+          </a>
         </div>
         <div>
-           <div class="flex items-center justify-between mb-6">
-              <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Zertifikate und Diplome</h3>
-           </div>
-           <div class="grid grid-cols-2 gap-4">
-             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert1.jpg">
-               <div class="cert-img-container">
-                 <img src="cert1_thumb.jpg" loading="lazy" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="PhD Charité">
-               </div>
-             </button>
-             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert2.jpg">
-               <div class="cert-img-container">
-                 <img src="cert2_thumb.jpg" loading="lazy" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Approbation">
-               </div>
-             </button>
-             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert3.jpg">
-               <div class="cert-img-container">
-                 <img src="cert3_thumb.jpg" loading="lazy" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Facharzt">
-               </div>
-             </button>
-             <button class="group relative rounded-lg border border-slate-200 overflow-hidden hover:shadow-lg transition cursor-zoom-in" data-full="cert4.jpg">
-               <div class="cert-img-container">
-                 <img src="cert4_thumb.jpg" loading="lazy" class="w-full h-full object-contain p-2 group-hover:scale-105 transition duration-500" alt="Professor h.c.">
-               </div>
-             </button>
-           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="py-20 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-serif font-bold text-slate-900">Meine Kompetenzen</h2>
-        <p class="mt-4 text-slate-600">Ganzheitlicher Ansatz für wissenschaftliche Publikationen</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
-              <i class="fas fa-brain"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Beratung</h3>
-            <ul class="text-sm text-slate-600 space-y-2">
-              <li>• Studienarchitektur</li>
-              <li>• Studiendesign & EQUATOR-Checklisten</li>
-              <li>• Journal-Auswahl (Scopus, WoS)</li>
-              <li>• Antwortschreiben an Gutachter (Reviewer)</li>
-            </ul>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
-              <i class="fas fa-pen-nib"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Lektorat</h3>
-            <ul class="text-sm text-slate-600 space-y-2">
-              <li>• Akademisches Lektorat (Editing)</li>
-              <li>• Formatierung (Journal-Richtlinien)</li>
-              <li>• Erstellung des Begleitschreibens (Cover Letter)</li>
-              <li>• Arbeit mit DE, EN, RU Texten</li>
-            </ul>
-          </div>
-        </div>
-        <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition duration-300 border border-slate-100 group relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-brand group-hover:scale-150"></div>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white border border-slate-100 shadow rounded-lg flex items-center justify-center text-brand mb-6 text-xl">
-              <i class="fas fa-chart-pie"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Biostatistik</h3>
-            <ul class="text-sm text-slate-600 space-y-2">
-              <li>• Vollständiger Analysezyklus in SPSS / R</li>
-              <li>• Visualisierung (High-DPI Grafiken)</li>
-              <li>• Beschreibung des Methodenteils</li>
-              <li>• Fallzahlberechnung</li>
-            </ul>
+          <h3 style="font-size: 0.9rem; text-transform: uppercase; color: #94a3b8; margin-bottom: 20px;">Zertifikate und Diplome</h3>
+          <div class="cert-grid">
+            <div class="cert-item" onclick="openLb('cert1.jpg')"><img src="cert1_thumb.jpg"></div>
+            <div class="cert-item" onclick="openLb('cert2.jpg')"><img src="cert2_thumb.jpg"></div>
+            <div class="cert-item" onclick="openLb('cert3.jpg')"><img src="cert3_thumb.jpg"></div>
+            <div class="cert-item" onclick="openLb('cert4.jpg')"><img src="cert4_thumb.jpg"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="process" class="py-20 bg-white">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-serif font-bold text-slate-900">Wie wir arbeiten</h2>
+  <section id="services">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2>Meine Kompetenzen</h2>
       </div>
-      <div class="grid md:grid-cols-4 gap-6 text-center relative">
-        <div class="hidden md:block absolute top-8 left-0 w-full h-0.5 bg-slate-100 -z-10"></div>
+      <div class="grid-3">
+        <div class="service-card">
+          <div class="icon-box"><i class="fas fa-brain"></i></div>
+          <h3>Beratung</h3>
+          <p style="font-size: 0.9rem; color: #64748b;">Studienarchitektur, Studiendesign, EQUATOR-Checklisten, Journal-Auswahl.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
+          <h3>Lektorat</h3>
+          <p style="font-size: 0.9rem; color: #64748b;">Akademisches Lektorat, Formatierung nach Richtlinien, Cover Letter, Arbeit mit DE/EN/RU Texten.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
+          <h3>Biostatistik</h3>
+          <p style="font-size: 0.9rem; color: #64748b;">Vollständiger Analysezyklus in SPSS/R, High-DPI Visualisierung, Fallzahlberechnung.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="bg-white">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 50px;">Wie wir arbeiten</h2>
+      <div class="grid-4" style="text-align: center;">
         <div>
-          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">1</div>
-          <h4 class="font-bold text-slate-900 mb-2">Audit</h4>
-          <p class="text-sm text-slate-500">Bewertung des Materials, Auswahl der Zieljournale und Planung.</p>
+          <div style="font-size: 40px; color: var(--brand); font-weight: bold; margin-bottom: 10px;">1</div>
+          <h4>Audit</h4>
+          <p style="font-size: 0.85rem; color: #64748b;">Bewertung des Materials und Planung.</p>
         </div>
-         <div>
-          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">2</div>
-          <h4 class="font-bold text-slate-900 mb-2">Analyse</h4>
-          <p class="text-sm text-slate-500">Statistische Bearbeitung und Generierung der Ergebnisse.</p>
+        <div>
+          <div style="font-size: 40px; color: var(--brand); font-weight: bold; margin-bottom: 10px;">2</div>
+          <h4>Analyse</h4>
+          <p style="font-size: 0.85rem; color: #64748b;">Statistik und Ergebnisse.</p>
         </div>
-         <div>
-          <div class="w-16 h-16 mx-auto bg-white border-2 border-brand text-brand rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-sm">3</div>
-          <h4 class="font-bold text-slate-900 mb-2">Gestaltung</h4>
-          <p class="text-sm text-slate-500">Lektorat, Übersetzung, Erstellung von Tabellen und Abbildungen.</p>
+        <div>
+          <div style="font-size: 40px; color: var(--brand); font-weight: bold; margin-bottom: 10px;">3</div>
+          <h4>Gestaltung</h4>
+          <p style="font-size: 0.85rem; color: #64748b;">Lektorat und Übersetzung.</p>
         </div>
-         <div>
-          <div class="w-16 h-16 mx-auto bg-brand text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 shadow-lg">4</div>
-          <h4 class="font-bold text-slate-900 mb-2">Einreichung</h4>
-          <p class="text-sm text-slate-500">Upload beim Journal, Korrespondenz mit der Redaktion bis zur Annahme.</p>
+        <div>
+          <div style="font-size: 40px; color: var(--brand); font-weight: bold; margin-bottom: 10px;">4</div>
+          <h4>Einreichung</h4>
+          <p style="font-size: 0.85rem; color: #64748b;">Upload und Korrespondenz.</p>
         </div>
       </div>
     </div>
   </section>
-<section class="py-12 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white border border-slate-200 text-brand mb-4 shadow-sm">
-        <i class="fas fa-handshake"></i>
-      </div>
-      <h3 class="text-xl font-serif font-bold text-slate-900 mb-3">Kooperation & Empfehlungen</h3>
-      <div class="prose prose-slate max-w-2xl mx-auto text-sm text-slate-600 leading-relaxed">
-        <p class="mb-2">
+
+<section class="partnership">
+    <div class="container" style="max-width: 800px;">
+      <div class="partnership-icon"><i class="fas fa-handshake"></i></div>
+      <h3 style="margin-bottom: 30px;">Kooperation & Empfehlungen</h3>
+      <div style="font-size: 0.95rem; color: #475569; line-height: 1.8;">
+        <p style="margin-bottom: 15px;">
           Ich schätze Ihr berufliches Vertrauen sehr. Für jede erfolgreiche Weiterempfehlung an Kollegen 
-          bedanke ich mich mit <strong class="text-brand">5% des Auftragswertes</strong> (Referral Fee).
+          bedanke ich mich mit <strong style="color: var(--brand);">5% des Auftragswertes</strong> (Referral Fee).
         </p>
-        <p>
+        <p style="margin-bottom: 30px;">
           Zudem bin ich offen für strategische Partnerschaften mit Agenturen, CROs 
           und Bildungsplattformen zu individuellen Konditionen.
         </p>
       </div>
-      <div class="mt-6">
-        <a href="#contact" class="text-sm font-medium text-brand hover:text-brand-dark transition border-b border-brand/30 hover:border-brand">
-          Kooperation besprechen
-        </a>
-      </div>
+      <a href="#contact" style="color: var(--brand); font-weight: 600; border-bottom: 1px solid rgba(15, 76, 129, 0.3); padding-bottom: 2px;">Kooperation besprechen</a>
     </div>
   </section>
-  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800" id="contact">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h4 class="text-white text-lg font-serif font-bold mb-4">Kontakt</h4>
-          <div class="space-y-3">
-            <a href="https://t.me/+79854770449" class="flex items-center hover:text-white transition">
-              <i class="fab fa-telegram w-6 text-center mr-3"></i> Telegram
-            </a>
-            <a href="https://wa.me/79854770449" class="flex items-center hover:text-white transition">
-              <i class="fab fa-whatsapp w-6 text-center mr-3"></i> WhatsApp
-            </a>
-          </div>
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div>
+        <h4 style="color: #fff; margin-bottom: 20px;">Kontakt</h4>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://t.me/+79854770449"><i class="fab fa-telegram" style="width: 20px;"></i> Telegram</a>
+          <a href="https://wa.me/79854770449"><i class="fab fa-whatsapp" style="width: 20px;"></i> WhatsApp</a>
+          <a href="mailto:zhigalovmd@yandex.ru"><i class="fas fa-envelope" style="width: 20px;"></i> zhigalovmd@yandex.ru</a>
         </div>
-        <div class="md:text-right">
-           </div>
       </div>
-      <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-600">
-        &copy; 2025 Konstantin Zhigalov. Alle Rechte vorbehalten.
+      <div style="text-align: right;">
+        <p>Selbständiger Zhigalov K.Y.</p>
+        <p>Steuernummer (INN): 231223522705</p>
+        <a href="offer.html" style="text-decoration: underline;">AGB / Offer</a>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #64748b;">© 2025 Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </footer>
 
-  <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-[100] flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
-    <button class="absolute top-4 right-4 text-white/70 hover:text-white text-4xl focus:outline-none transition">&times;</button>
-    <img id="lightbox-img" class="max-w-full max-h-[90vh] rounded shadow-2xl transform scale-95 transition-transform duration-300" src="" alt="Zertifikat">
+  <div id="lightbox" onclick="closeLb()">
+    <img id="lightbox-img" src="">
   </div>
 
   <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const btns = document.querySelectorAll('[data-full]');
     function openLb(src) {
-      lightbox.classList.remove('hidden');
-      setTimeout(() => { lightbox.classList.remove('opacity-0'); lightboxImg.classList.remove('scale-95'); lightboxImg.classList.add('scale-100'); }, 10);
-      lightboxImg.src = src;
-      document.body.style.overflow = 'hidden';
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lb.classList.add('active');
     }
     function closeLb() {
-      lightbox.classList.add('opacity-0'); lightboxImg.classList.remove('scale-100'); lightboxImg.classList.add('scale-95');
-      setTimeout(() => { lightbox.classList.add('hidden'); document.body.style.overflow = ''; }, 300);
+      document.getElementById('lightbox').classList.remove('active');
     }
-    btns.forEach(btn => btn.addEventListener('click', () => openLb(btn.dataset.full)));
-    lightbox.addEventListener('click', (e) => { if(e.target===lightbox || e.target.closest('button')) closeLb(); });
-    document.addEventListener('keydown', (e) => { if(e.key==='Escape') closeLb(); });
   </script>
+
 </body>
 </html>
