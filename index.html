@@ -178,6 +178,98 @@
     }
     #lightbox.active { display: flex; }
     #lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+
+/* Стили для новой секции профилей */
+    .profiles-section {
+      padding: 50px 0;
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .profiles-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .profiles-title h2 {
+      font-size: 1.75rem;
+      color: var(--text-main);
+    }
+    .profiles-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .profile-card {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      padding: 18px 25px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      min-width: 300px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+      border-color: var(--brand);
+    }
+    .p-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 18px;
+      color: #fff;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    /* Брендовые цвета */
+    .bg-orcid { background: #A6CE39; }
+    .bg-scopus { background: #EB5F07; }
+    .bg-scholar { background: #4285F4; }
+
+    .p-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .p-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #94a3b8;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+    .p-value {
+      font-size: 1rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+    .p-stats {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .h-badge {
+      background: #f1f5f9;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--brand);
+    }
+
+    @media (max-width: 768px) {
+      .profile-card { width: 100%; }
+      .profiles-section { padding: 40px 0; }
+    }
   </style>
 </head>
 <body>
@@ -217,19 +309,48 @@
             <a href="https://t.me/+79854770449" class="btn btn-primary">Обсудить проект</a>
             <a href="#services" class="btn btn-outline">Услуги</a>
           </div>
-
-          <div class="orcid-box">
-            <div class="orcid-icon"><i class="fab fa-orcid"></i></div>
-            <div>
-              <div style="font-size: 10px; text-transform: uppercase; color: #94a3b8; font-weight: bold;">Konstantin Zhigalov, MD, PhD</div>
-              <div style="font-family: monospace; color: #334155;">0000-0002-6440-3736</div>
-              <div style="font-size: 12px; color: #64748b;">H-Index: 16 (Scopus)</div>
-            </div>
-          </div>
         </div>
         <div class="hero-img">
           <img src="clinic.jpg" class="main-photo" alt="Медицинский офис">
         </div>
+      </div>
+    </div>
+  </section>
+
+<section class="profiles-section">
+    <div class="container">
+      <div class="profiles-title">
+        <h2>Наукометрические профили</h2>
+      </div>
+      <div class="profiles-grid">
+        
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=57517490500" target="_blank" class="profile-card">
+          <div class="p-icon bg-scopus"><i class="fas fa-chart-line"></i></div>
+          <div class="p-info">
+            <span class="p-label">Scopus</span>
+            <span class="p-value">ID 57517490500</span>
+            <div class="p-stats">H-Index: <span class="h-badge">16</span></div>
+          </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?user=AgmsZFAAAAAJ&hl=ru&oi=ao" target="_blank" class="profile-card">
+          <div class="p-icon bg-scholar"><i class="fas fa-graduation-cap"></i></div>
+          <div class="p-info">
+            <span class="p-label">Google Scholar</span>
+            <span class="p-value">Konstantin Zhigalov</span>
+            <div class="p-stats">H-Index: <span class="h-badge">19</span></div>
+          </div>
+        </a>
+
+        <a href="https://orcid.org/0000-0002-6440-3736" target="_blank" class="profile-card">
+          <div class="p-icon bg-orcid"><i class="fab fa-orcid"></i></div>
+          <div class="p-info">
+            <span class="p-label">ORCID</span>
+            <span class="p-value">0000-0002-6440-3736</span>
+            <div class="p-stats" style="color:#94a3b8">Verified Record</div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -246,7 +367,7 @@
           <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
             <ul style="list-style: none; font-size: 0.9rem;">
               <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Автор 70+ публикаций (Scopus)</li>
-              <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Владение SPSS / R</li>
+              <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Владение SPSS</li>
               <li><i class="fas fa-check" style="color: var(--brand); margin-right: 10px;"></i> Работа на RU, EN, DE</li>
             </ul>
           </div>
@@ -286,7 +407,7 @@
         <div class="service-card">
           <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
           <h3>Биостатистика</h3>
-          <p style="font-size: 0.9rem; color: #64748b;">Анализ данных в SPSS/R, визуализация графиков, расчет выборки.</p>
+          <p style="font-size: 0.9rem; color: #64748b;">Анализ данных в SPSS, визуализация графиков, расчет выборки.</p>
         </div>
       </div>
     </div>
